@@ -1,11 +1,13 @@
 const connectToMongo = require("./Database/db");
 const express = require("express");
+const compression = require("compression");
 const app = express();
 connectToMongo();
 const port = 5000 || process.env.PORT;
 var cors = require("cors");
 
 app.use(cors());
+app.use(compression());
 app.use(express.json()); 
 
 app.use("/api/admin/auth", require("./routes/Admin Api/adminCredential"));
